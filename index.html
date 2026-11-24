@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillSwap — Student Skill Exchange</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="SkillSwap home">
+        <span class="brand-mark">S</span><span>skill<span class="brand-accent">swap</span></span>
+      </a>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="nav-menu">
+        <button class="nav-link active" data-page="overview"><span class="nav-icon">▦</span> Overview</button>
+        <button class="nav-link" data-page="discover"><span class="nav-icon">⌕</span> Discover students <span class="nav-count" id="discoverCount">8</span></button>
+        <button class="nav-link" data-page="connections"><span class="nav-icon">♧</span> My connections <span class="nav-count" id="connectionCount">0</span></button>
+        <button class="nav-link" data-page="profile"><span class="nav-icon">◉</span> My profile</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card">
+          <div class="help-icon">✦</div>
+          <strong>Learning is better together.</strong>
+          <p>Share what you know. Discover what you don't.</p>
+        </div>
+        <div class="user-mini">
+          <div class="avatar avatar-purple">AS</div>
+          <div><strong id="sideName">Aarav Sharma</strong><small>Student account</small></div>
+          <span class="more">•••</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Open menu">☰</button>
+        <div class="breadcrumb">Workspace <span>/</span> <b id="crumb">Overview</b></div>
+        <div class="top-actions">
+          <span class="semester-pill"><i></i> Campus community</span>
+          <button class="icon-button" title="Notifications">♧<span class="notification-dot"></span></button>
+          <div class="avatar avatar-purple top-avatar">AS</div>
+        </div>
+      </header>
+
+      <section class="page active-page" id="overviewPage">
+        <div class="welcome-row">
+          <div>
+            <div class="eyebrow">TUESDAY, YOUR LEARNING JOURNEY STARTS HERE</div>
+            <h1>Good to see you, <span id="welcomeName">Aarav</span> <span class="wave">✦</span></h1>
+            <p class="subheading">Trade your talents. Pick up a new skill. Grow together.</p>
+          </div>
+          <button class="primary-button" data-go="profile">＋ Edit my skills</button>
+        </div>
+
+        <div class="hero-banner">
+          <div class="hero-copy">
+            <span class="hero-tag">YOUR NEXT SKILL IS ONE CONNECTION AWAY</span>
+            <h2>Know something.<br><em>Teach something.</em></h2>
+            <p>Connect with students who want to learn what you know — and know what you want to learn.</p>
+            <button class="hero-button" data-go="discover">Find my skill match <span>→</span></button>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+            <div class="floating-card card-python"><span class="mini-icon orange">Py</span><div><b>Python</b><small>Can teach</small></div><span class="check">✓</span></div>
+            <div class="floating-card card-design"><span class="mini-icon pink">✳</span><div><b>UI Design</b><small>Wants to learn</small></div><span class="spark">✦</span></div>
+            <div class="swap-circle">⇄</div>
+            <div class="art-dot dot-a"></div><div class="art-dot dot-b"></div><div class="art-dot dot-c"></div>
+          </div>
+        </div>
+
+        <div class="section-heading">
+          <div><h2>Your exchange snapshot</h2><p>A quick look at your learning activity.</p></div>
+          <span class="muted-label">UPDATED JUST NOW</span>
+        </div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon lavender">♧</span><span class="stat-trend">Your network</span></div><strong id="statConnections">0</strong><p>Active connections</p></article>
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon mint">↗</span><span class="stat-trend">Your contribution</span></div><strong id="statTeaching">3</strong><p>Skills you can teach</p></article>
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon peach">✧</span><span class="stat-trend">Your next step</span></div><strong id="statLearning">2</strong><p>Skills you want to learn</p></article>
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon blue">◎</span><span class="stat-trend">Smart discovery</span></div><strong id="statMatches">6</strong><p>Potential matches</p></article>
+        </div>
+
+        <div class="content-grid">
+          <section class="panel matches-panel">
+            <div class="panel-heading"><div><h2>Recommended for you</h2><p>Students with skills that complement yours.</p></div><button class="text-button" data-go="discover">View all <span>→</span></button></div>
+            <div id="recommendedList" class="people-list"></div>
+          </section>
+          <section class="panel profile-progress">
+            <div class="panel-heading"><div><h2>Profile strength</h2><p>Help others find the right exchange.</p></div><span class="progress-badge">Good start</span></div>
+            <div class="progress-number"><strong id="profilePercent">75%</strong><span>complete</span></div>
+            <div class="progress-track"><span id="progressBar" style="width:75%"></span></div>
+            <div class="checklist">
+              <div class="check-row done"><span>✓</span><div><b>Add your basic details</b><small>Your profile is ready.</small></div></div>
+              <div class="check-row done"><span>✓</span><div><b>List skills you can teach</b><small>Help others learn from you.</small></div></div>
+              <div class="check-row"><span>○</span><div><b>Add a short introduction</b><small>Tell students what makes you, you.</small></div></div>
+            </div>
+            <button class="outline-button full-button" data-go="profile">Complete my profile</button>
+          </section>
+        </div>
+      </section>
+
+      <section class="page" id="discoverPage">
+        <div class="page-title-row"><div><div class="eyebrow">MAKE A CONNECTION</div><h1>Discover your people</h1><p class="subheading">Find students whose learning goals match what you can teach.</p></div><span class="result-pill" id="resultCount">8 students</span></div>
+        <div class="filter-bar">
+          <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search by name or skill..." /></label>
+          <select id="skillFilter" aria-label="Filter by skill"><option value="">All skills</option><option>Python</option><option>Graphic Design</option><option>UI/UX Design</option><option>Java</option><option>Video Editing</option><option>Public Speaking</option><option>Data Analysis</option><option>Photography</option></select>
+          <select id="sortFilter" aria-label="Sort students"><option value="match">Best match</option><option value="name">Name A–Z</option></select>
+        </div>
+        <div class="discover-grid" id="discoverGrid"></div>
+      </section>
+
+      <section class="page" id="connectionsPage">
+        <div class="page-title-row"><div><div class="eyebrow">YOUR LEARNING CIRCLE</div><h1>My connections</h1><p class="subheading">People you've connected with for a skill exchange.</p></div></div>
+        <div class="panel connection-panel"><div id="connectionsList"></div></div>
+      </section>
+
+      <section class="page" id="profilePage">
+        <div class="page-title-row"><div><div class="eyebrow">MAKE YOURSELF DISCOVERABLE</div><h1>Your student profile</h1><p class="subheading">Tell the community what you know and what you'd love to learn.</p></div></div>
+        <div class="profile-layout">
+          <section class="panel profile-form">
+            <div class="form-section-title"><div class="avatar avatar-purple profile-avatar">AS</div><div><h2>Personal details</h2><p>Your profile helps students get to know you.</p></div></div>
+            <div class="form-grid">
+              <label>Full name<input id="nameInput" value="Aarav Sharma" maxlength="40"></label>
+              <label>Course / Department<input id="courseInput" value="B.Tech · Computer Science" maxlength="60"></label>
+              <label>College / University<input id="collegeInput" value="Your University" maxlength="60"></label>
+              <label>Year of study<select id="yearInput"><option>1st Year</option><option selected>2nd Year</option><option>3rd Year</option><option>4th Year</option><option>Postgraduate</option></select></label>
+            </div>
+            <label class="full-label">About me<textarea id="aboutInput" rows="3" maxlength="220" placeholder="A little about your interests, experience and learning style...">Curious learner who enjoys building things, sharing knowledge and collaborating with other students.</textarea></label>
+            <div class="skills-edit-grid">
+              <div class="skill-editor"><div class="editor-heading"><div><h3>Skills I can teach</h3><p>Share your strengths with others.</p></div><span class="skill-symbol teach">↗</span></div><div class="tag-list" id="teachTags"></div><div class="add-skill"><input id="teachInput" placeholder="e.g. Python"><button id="addTeach">Add</button></div></div>
+              <div class="skill-editor"><div class="editor-heading"><div><h3>Skills I want to learn</h3><p>Set your next learning goals.</p></div><span class="skill-symbol learn">✧</span></div><div class="tag-list" id="learnTags"></div><div class="add-skill"><input id="learnInput" placeholder="e.g. Graphic Design"><button id="addLearn">Add</button></div></div>
+            </div>
+            <div class="form-footer"><span id="saveMessage">Your changes are saved in this browser.</span><button class="primary-button" id="saveProfile">Save profile <span>→</span></button></div>
+          </section>
+          <aside class="panel preview-card"><span class="preview-label">PROFILE PREVIEW</span><div class="avatar avatar-purple preview-avatar" id="previewInitials">AS</div><h2 id="previewName">Aarav Sharma</h2><p id="previewCourse">B.Tech · Computer Science</p><div class="preview-divider"></div><p class="preview-about" id="previewAbout">Curious learner who enjoys building things, sharing knowledge and collaborating with other students.</p><h4>CAN TEACH</h4><div class="tag-list" id="previewTeach"></div><h4>WANTS TO LEARN</h4><div class="tag-list" id="previewLearn"></div></aside>
+        </div>
+      </section>
+
+      <footer class="footer"><span>© 2026 SkillSwap</span><span>Built for students, powered by sharing <b>✦</b></span></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
